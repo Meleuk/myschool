@@ -4,7 +4,8 @@ import React from "react";
 export function BorderCol1 (){
     return (
         <div className="rounded col-lg-7" style={{ boxShadow: "rgba(0, 0, 0, 0.09) 0px 3px 12px",
-        borderRadius: "8px", padding: "10px",
+        borderRadius: "8px",
+        padding: "10px",
         display:"flex", 
         flexDirection: "column",
         rowGap: "10px"

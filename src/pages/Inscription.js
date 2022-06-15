@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { BorderCol1 } from "../composants/border/BorderCol1";
 import { BorderCol2 } from "../composants/border/BorderCol2";
+import { Footer } from "../composants/footer/Footer";
 import { Header } from "../composants/header/Header";
 // import { Dropdown } from "../composants/dropdown/Dropdown";
 // import FileUploader from "../composants/uploadFile/button/UploadFileButton";
@@ -45,9 +46,8 @@ export function Inscription() {
                     <BorderCol1/>
                     <BorderCol2/>
                 </form>
-
-        
             </main >
+            <Footer/>
         </div>
     )
 }

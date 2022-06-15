@@ -3,13 +3,13 @@ import React from "react";
 
 export function BorderCol2() {
     return (
-        <div className="col-lg-5">
+        <div className=" col-lg-5 " >
             <div className="rounded " style={{
                 borderRadius: "8px",
                 padding: "10px",
                 display:"flex",
                 flexDirection: "column",
-                boxsShadow: "rgba(0, 0, 0, 0.09) 0px 3px 12px",
+                boxShadow: "rgba(0, 0, 0, 0.09) 0px 3px 12px",
                 alignItems: "center",
                 rowGap: "10px"
             }}>
