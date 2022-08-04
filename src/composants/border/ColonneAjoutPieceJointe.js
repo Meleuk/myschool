@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export function BorderCol2() {
+export function ColonneAjoutPieceJointe() {
     return (
         <div className=" col-lg-5 " >
             <div className="rounded " style={{
@@ -13,7 +13,7 @@ export function BorderCol2() {
                 alignItems: "center",
                 rowGap: "10px"
             }}>
-                <h5 className="section-title">pieces jointes</h5>
+                <h5 className="section-title">Ajouter des pieces jointes</h5>
                 <div className="border-bottom: dashed black;">
 
                     <div className="rounded customiseUploadBorder ">

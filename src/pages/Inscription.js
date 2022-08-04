@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
-import { BorderCol1 } from "../composants/border/BorderCol1";
-import { BorderCol2 } from "../composants/border/BorderCol2";
+import { ColonneSaisiInformation } from "../composants/border/ColonneSaisiInformation";
+import { ColonneAjoutPieceJointe } from "../composants/border/ColonneAjoutPieceJointe";
 import { Footer } from "../composants/footer/Footer";
 import { Header } from "../composants/header/Header";
 // import { Dropdown } from "../composants/dropdown/Dropdown";
@@ -32,19 +32,16 @@ export function Inscription() {
 
     //   };
 
-
-
-
     return (
-        <div>
+        <div id="inscription-main">
             <Header />
-            <main className="main-container-" >
+            <main className="main-container" >
                 <div style={{gridColumn: "1/3"}}>
-                    <h2 className="section-title">Inscription en ligne</h2>
+                    <h2 className="section-title">Fiche d'inscription</h2>
                 </div>
                 <form action="#" className="container row">
-                    <BorderCol1/>
-                    <BorderCol2/>
+                    <ColonneSaisiInformation/>
+                    <ColonneAjoutPieceJointe/>
                 </form>
             </main >
             <Footer/>

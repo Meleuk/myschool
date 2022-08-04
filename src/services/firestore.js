@@ -1,4 +1,4 @@
-import { doc , setDoc, updateDoc } from "firebase/firestore"
+import { addDoc, collection, doc , setDoc, updateDoc } from "firebase/firestore"
 import { db } from "../firebase"
 import DBData from "../model/DBData";
 /**
@@ -7,9 +7,9 @@ import DBData from "../model/DBData";
  * @param {DBData} item 
  */
 export async function addOne( collectionName , item ) {
-    const itemRef = doc(db, collectionName );
+    const itemRef = collection(db, collectionName );
 
-    return await setDoc( itemRef , item );
+    return await addDoc( itemRef , {...item} );
 }
 /**
  * 
