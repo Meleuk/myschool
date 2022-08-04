@@ -1,0 +1,2 @@
+
+type Gender = "Homme" | "Femme" 

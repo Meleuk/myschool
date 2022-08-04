@@ -38,7 +38,7 @@ export function Inscription() {
     return (
         <div>
             <Header />
-            <main className="main-container-">
+            <main className="main-container-" >
                 <div style={{gridColumn: "1/3"}}>
                     <h2 className="section-title">Inscription en ligne</h2>
                 </div>
