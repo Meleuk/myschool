@@ -24,7 +24,10 @@ export default class Etudiant extends DBData {
         this.classId = "";
 
         this.motivation = "";
-        
+        /**
+         * @type {string[]}
+         */
+        this.piecesJointes = []
 
 
     }

@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
+/**
+ * @param {object} props
+ * @param {Function} props.onPiece1Uploaded
+ * @param {Function} props.onPiece2Uploaded
+ * @param {Function} props.onPiece3Uploaded
+ * @param {Function} props.onPiece4Uploaded
+ * @returns 
+ */
+export function ColonneAjoutPieceJointe(props) {
 
-export function ColonneAjoutPieceJointe() {
 
 
 
@@ -23,7 +31,18 @@ export function ColonneAjoutPieceJointe() {
                         <div className="form-group ">
 
 
-                            <input type="file" className="form-control-file" id="" />
+                            <input
+                                type="file"
+                                className="form-control-file"
+                                id=""
+                                onChange={(e) => {
+                                    if (e.target.files[0]) {
+                                        props.onPiece1Uploaded(e.target.files[0])
+                                    }
+                                }}
+
+
+                            />
                             <label htmlFor="uploadfile1"> Ajouter une piece</label>
                         </div>
                     </div>
@@ -32,7 +51,17 @@ export function ColonneAjoutPieceJointe() {
                         <div className="form-group">
 
 
-                            <input type="file" className="form-control-file" id="" placeholder="+" />
+                            <input
+                                type="file"
+                                className="form-control-file"
+                                id=""
+                                placeholder="+"
+                                onChange={(e) => {
+                                    if (e.target.files[0]) {
+                                        props.onPiece2Uploaded(e.target.files[0])
+                                    }
+                                }}
+                            />
                             <label htmlFor="uploadfile1"> Ajouter une piece</label>
                         </div>
                     </div>
@@ -41,7 +70,14 @@ export function ColonneAjoutPieceJointe() {
                         <div className="form-group">
 
 
-                            <input type="file" className="form-control-file" />
+                            <input type="file"
+                                className="form-control-file"
+                                onChange={(e) => {
+                                    if (e.target.files[0]) {
+                                        props.onPiece3Uploaded(e.target.files[0])
+                                    }
+                                }}
+                            />
                             <label htmlFor="uploadfile1"> Ajouter une piece</label>
                         </div>
                     </div>
@@ -50,7 +86,15 @@ export function ColonneAjoutPieceJointe() {
                         <div className="form-group">
 
 
-                            <input type="file" className="form-control-file" />
+                            <input
+                                type="file"
+                                className="form-control-file"
+                                onChange={(e) => {
+                                    if (e.target.files[0]) {
+                                        props.onPiece4Uploaded(e.target.files[0])
+                                    }
+                                }}
+                            />
                             <label htmlFor="uploadfile1"> Ajouter une piece</label>
                         </div>
                     </div>

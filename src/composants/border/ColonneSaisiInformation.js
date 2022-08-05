@@ -3,8 +3,14 @@ import { inscrire } from "../../middleware/etudiant";
 import Etudiant from "../../model/etudiant";
 import { Diploma, Gender, Mention } from "../../model/types/baseTypes";
 
-
-export function ColonneSaisiInformation() {
+/**
+ * 
+ * @param {object} props 
+ * @param {Function} props.onSubmitEtudiant
+ * @param {boolean} props.disabled
+ * @returns 
+ */
+export function ColonneSaisiInformation(props) {
 
 
     const [name, setName] = useState("");
@@ -49,9 +55,7 @@ export function ColonneSaisiInformation() {
         </div>)
 
 
-    async function sendRequestInscription () {
-        alert("On a cliquer sur le boutton iscrire")
-
+    function sendRequestInscription () {
         const etudiant = new Etudiant();
         etudiant.name = name;
         etudiant.firstName = lastName;
@@ -61,7 +65,8 @@ export function ColonneSaisiInformation() {
         etudiant.gender = Gender.Male;
         etudiant.motivation = motivation;
 
-        const res = await inscrire(etudiant);
+        //const res = await inscrire(etudiant);
+        return etudiant;
     };
     
 
@@ -211,8 +216,10 @@ export function ColonneSaisiInformation() {
                 className="btn btn-primary"
                 onClick={ (el)=> {
                     el.preventDefault();
-                    sendRequestInscription();
+                    
+                    props.onSubmitEtudiant(sendRequestInscription());
                 }}
+                disabled ={props.disabled}
                 >
                     Envoyer
                 </button>

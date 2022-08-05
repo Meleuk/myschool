@@ -7,6 +7,7 @@ import DBData from "../model/DBData";
  * @param {DBData} item 
  */
 export async function addOne( collectionName , item ) {
+    console.log(item)
     const itemRef = collection(db, collectionName );
 
     return await addDoc( itemRef , {...item} );
