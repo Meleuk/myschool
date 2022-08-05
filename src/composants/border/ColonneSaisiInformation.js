@@ -62,7 +62,6 @@ export function ColonneSaisiInformation() {
         etudiant.motivation = motivation;
 
         const res = await inscrire(etudiant);
-        console.log(res)
     };
     
 

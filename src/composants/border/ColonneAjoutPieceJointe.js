@@ -2,12 +2,15 @@ import React from "react";
 
 
 export function ColonneAjoutPieceJointe() {
+
+
+
     return (
-        <div className=" col-lg-5 " >
+        <div className="col-lg-5 " >
             <div className="rounded " style={{
                 borderRadius: "8px",
                 padding: "10px",
-                display:"flex",
+                display: "flex",
                 flexDirection: "column",
                 boxShadow: "rgba(0, 0, 0, 0.09) 0px 3px 12px",
                 alignItems: "center",
@@ -54,12 +57,16 @@ export function ColonneAjoutPieceJointe() {
                 </div>
 
                 <div className="col-12 d-flex align-items-center justify-content-center my-5">
-                    <button type="" className="btn btn-secondary">
+                    <button
+                        type=""
+                        className="btn btn-secondary"
+                        disabled
+                    >
                         Imprimer
                     </button>
                 </div>
-            </div>    
+            </div>
 
         </div>
-      );
+    );
 }
