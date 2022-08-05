@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { inscrire } from "../../middleware/etudiant";
+import { getAllFiliere, getAllOptionsOfFiliere } from "../../model/Classe";
 import Etudiant from "../../model/etudiant";
 import { Diploma, Gender, Mention } from "../../model/types/baseTypes";
 
@@ -24,38 +25,22 @@ export function ColonneSaisiInformation(props) {
     const [classe, setClasse] = useState("");
 
 
-    const [options, setOptions] = useState(["BAC A", "BAC C", "BAC D", "BAC ESF", "Autre"]);
-    const listOptions = options.map(el => <option key={el} value={el} >{el}</option>);
+    const [options, setOptions] = useState([{ id: 1 , name :"Genie informatique"},{ id: 2 , name : "Genie culinaire"}, { id: 3 , name :"Genie civil"},{ id: 4 , name : "Sante"}, { id: 5 , name :"Autre"}]);
+    //const listOptions = ;
 
-    const [classes, setClasses] = useState(["Genie informatique", "Genie culinaire", "Genie civil", "Sante", "Autre"]);
-    const listClasses = classes.map(el => <option key={el} value={el} >{el}</option>);
+    const [classes, setClasses] = useState([{ id: 1 , name :"Genie informatique"},{ id: 2 , name : "Genie culinaire"}, { id: 3 , name :"Genie civil"},{ id: 4 , name : "Sante"}, { id: 5 , name :"Autre"}]);
+    //const listClasses = 
 
 
     const [diplomes, setDiplomes] = useState(["BAC A", "BAC C", "BAC D", "BAC ESF", "Autre"])
-    const listDiplome = diplomes.map(el => <option key={el} value={el} >{el}</option>);
+    //const listDiplome = 
 
     const [mentions, setMentions] = useState([Mention.Honnorable, Mention.Bien, Mention.Excellent, Mention.Passable, Mention.TresBien, "Test"])
 
-    const listMentions = mentions.map(el =>
-        <div className="form-check">
-            <input 
-            className="form-check-input" 
-            type="radio" 
-            name="gridRadios" 
-            id={el} 
-            value={el}
-            onSelect = {(ele)=>{
-                setMention(el)
-            }} 
-            
-            />
-            <label className="form-check-label" htmlFor={el}>
-                {el}
-            </label>
-        </div>)
+    //const listMentions =
 
 
-    function sendRequestInscription () {
+    function sendRequestInscription() {
         const etudiant = new Etudiant();
         etudiant.name = name;
         etudiant.firstName = lastName;
@@ -68,8 +53,24 @@ export function ColonneSaisiInformation(props) {
         //const res = await inscrire(etudiant);
         return etudiant;
     };
-    
 
+    useEffect(() => {
+        async function init() {
+          
+            const filiere = await getAllFiliere();
+
+            setClasses(filiere)
+        }
+
+        init()
+    }, [])
+
+    async function settOptions(filiereId) {
+        console.log(filiereId)
+        const optionss = await getAllOptionsOfFiliere(filiereId);
+        console.info(optionss)
+        setOptions(optionss)
+    }
     return (
         <div className="rounded col-lg-7" style={{
             boxShadow: "rgba(0, 0, 0, 0.09) 0px 3px 12px",
@@ -151,7 +152,7 @@ export function ColonneSaisiInformation(props) {
                             setDiplome(el.target.value);
                         }}
                     >
-                        {listDiplome}
+                        {diplomes.map(el => <option key={el} value={el} >{el}</option>)}
                     </select>
                 </div>
             </div>
@@ -159,7 +160,23 @@ export function ColonneSaisiInformation(props) {
                 <div className="row ">
                     <legend className="col-form-label col-sm-2 pt-0">Mention obtenu</legend>
                     <div className="col-sm-10 ">
-                        {listMentions}
+                        {mentions.map(el =>
+                            <div className="form-check">
+                                <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    name="gridRadios"
+                                    id={el}
+                                    value={el}
+                                    onSelect={(ele) => {
+                                        setMention(el)
+                                    }}
+
+                                />
+                                <label className="form-check-label" htmlFor={el}>
+                                    {el}
+                                </label>
+                            </div>)}
                     </div>
                 </div>
             </fieldset>
@@ -168,14 +185,15 @@ export function ColonneSaisiInformation(props) {
                 <label htmlFor="diplome" className="col-sm-2 col-lg-4 col-form-label" style={{ whiteSpace: "nowrap" }}>Filiere
                     choisie</label>
                 <div className="col-sm-10 col-lg-8">
-                    <select 
-                    id="" 
-                    className="form-control"
-                    onChange={ (el)=> {
-                        setClasse(el.target.value);
-                    }}
+                    <select
+                        id=""
+                        className="form-control"
+                        onChange={(el) => {
+                            setClasse(el.target.value);
+                            settOptions(el.target.options[el.target.selectedIndex].value)
+                        }}
                     >
-                        {listClasses}
+                        {classes.map(el => <option key={el.id} value={el.id} >{el.name}</option>)}
                     </select>
                 </div>
             </div>
@@ -183,43 +201,43 @@ export function ColonneSaisiInformation(props) {
             <div className="form-group row">
                 <label htmlFor="diplome" className="col-sm-2 col-lg-4  col-form-label" style={{ whiteSpace: "nowrap" }}>Option</label>
                 <div className="col-sm-10 col-lg-8">
-                    <select 
-                    id="" 
-                    className="form-control" 
-                    required
+                    <select
+                        id=""
+                        className="form-control"
+                        required
 
-                    onChange={ (el)=> {
-                        setOption(el.target.value);
-                    }}
+                        onChange={(el) => {
+                            setOption(el.target.value);
+                        }}
                     >
-                        {listOptions}
+                        {options.map(el => <option key={el.id} value={el.id} >{el.name}</option>)}
 
                     </select>
                 </div>
             </div>
             <div className="col-12">
                 <label htmlFor="diplome" className="col-sm-2 col-form-label" style={{ whiteSpace: "nowrap" }}>Motivation</label>
-                <textarea 
-                name="comment" 
-                id="" 
-                className="form-control mb-4" 
-                placeholder="" 
-                required
-                onChange={ (el)=> {
-                    setMotivation(el.target.value);
-                }}
+                <textarea
+                    name="comment"
+                    id=""
+                    className="form-control mb-4"
+                    placeholder=""
+                    required
+                    onChange={(el) => {
+                        setMotivation(el.target.value);
+                    }}
                 ></textarea>
             </div>
             <div className="col-12 d-flex align-items-center justify-content-center my-5">
-                <button 
-                type="submit" 
-                className="btn btn-primary"
-                onClick={ (el)=> {
-                    el.preventDefault();
-                    
-                    props.onSubmitEtudiant(sendRequestInscription());
-                }}
-                disabled ={props.disabled}
+                <button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={(el) => {
+                        el.preventDefault();
+
+                        props.onSubmitEtudiant(sendRequestInscription());
+                    }}
+                    disabled={props.disabled}
                 >
                     Envoyer
                 </button>

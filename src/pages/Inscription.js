@@ -7,6 +7,7 @@ import { Header } from "../composants/header/Header";
 import { inscrire } from "../middleware/etudiant";
 import Etudiant from "../model/etudiant";
 import { savePieceJointe } from "../services/storage";
+import { initDiploma } from "../model/types/baseTypes";
 // import { Dropdown } from "../composants/dropdown/Dropdown";
 // import FileUploader from "../composants/uploadFile/button/UploadFileButton";
 // import "./inscription.css";
@@ -58,7 +59,7 @@ export function Inscription() {
             etudiant.piecesJointes.push(uri)
         }
         const res =await inscrire(etudiant);
-       
+        //await initDiploma();
         alert ("Votre inscription a été enregistré avc succès")
     }
     return (

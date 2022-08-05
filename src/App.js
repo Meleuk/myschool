@@ -4,6 +4,7 @@ import "./firebase.js";
 import { Inscription } from './pages/Inscription';
 
 function App() {
+  
   return (
     // <div className="App">
     //   <header className="App-header">
