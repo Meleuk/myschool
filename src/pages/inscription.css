@@ -1,6 +1,4 @@
-#inscription-main {
-    background-image: url("../ressources/img/etudiant-contexte.png");
-}
+
 .mainContainer {
     display: flex;
     flex-direction: column;

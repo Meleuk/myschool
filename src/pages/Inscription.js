@@ -63,7 +63,7 @@ export function Inscription() {
         alert ("Votre inscription a été enregistré avc succès")
     }
     return (
-        <div id="inscription-main">
+        <div >
             <Header />
             <main className="main-container" >
                 <div style={{ gridColumn: "1/3" }}>
@@ -104,3 +104,18 @@ export function Inscription() {
         </div>
     )
 }
+/**
+ * <div>
+            <Header />
+            <main className="main-container-">
+                <div style={{gridColumn: "1/3"}}>
+                    <h2 className="section-title">Inscription en ligne</h2>
+                </div>
+                <form action="#" className="container row">
+                    <BorderCol1/>
+                    <BorderCol2/>
+                </form>
+            </main >
+            <Footer/>
+        </div>
+ */
