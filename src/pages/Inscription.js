@@ -15,12 +15,10 @@ import { initDiploma } from "../model/types/baseTypes";
 // import { addDoc, collection } from "firebase/firestore";
 
 export function Inscription() {
-
-    const [piece1, setPiece1] = useState(null);
-
-    const [piece2, setPiece2] = useState(null);
-    const [piece3, setPiece3] = useState(null);
-    const [piece4, setPiece4] = useState(null);
+    // const [name, setName] = useState("");
+    // const [firstName, setFirstName] = useState("");
+    // const [birthDate, setBirthDate] = useState(new Date());
+    // const [gender, setGender] = useState("");
 
     // const  submit = async (e) => {
     //     console.log("Envoyons les données")
@@ -37,11 +35,19 @@ export function Inscription() {
     //       }
 
     //   };
+
+    const [piece1, setPiece1] = useState(null);
+
+    const [piece2, setPiece2] = useState(null);
+    const [piece3, setPiece3] = useState(null);
+    const [piece4, setPiece4] = useState(null);
+
     /**
      * 
      * @param {Etudiant} etudiant 
      */
-    async function sendInscription( etudiant ) {
+
+     async function sendInscription( etudiant ) {
         if (piece1) {
             const uri = await savePieceJointe(piece1)
             etudiant.piecesJointes.push(uri)
@@ -62,15 +68,16 @@ export function Inscription() {
         //await initDiploma();
         alert ("Votre inscription a été enregistré avc succès")
     }
+    
     return (
-        <div >
+        <div>
             <Header />
-            <main className="main-container" >
-                <div style={{ gridColumn: "1/3" }}>
+            <main className="main-container-">
+                <div style={{gridColumn: "1/3"}}>
                     <h2 className="section-title">Fiche d'inscription</h2>
                 </div>
                 <form action="#" className="container row">
-                    <ColonneSaisiInformation 
+                <ColonneSaisiInformation 
                     onSubmitEtudiant={(e) => {
                         console.log(e)
                         sendInscription(e)
@@ -100,22 +107,7 @@ export function Inscription() {
                     />
                 </form>
             </main >
-            <Footer />
+            <Footer/>
         </div>
     )
 }
-/**
- * <div>
-            <Header />
-            <main className="main-container-">
-                <div style={{gridColumn: "1/3"}}>
-                    <h2 className="section-title">Inscription en ligne</h2>
-                </div>
-                <form action="#" className="container row">
-                    <BorderCol1/>
-                    <BorderCol2/>
-                </form>
-            </main >
-            <Footer/>
-        </div>
- */
