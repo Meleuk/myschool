@@ -50,7 +50,7 @@ export function ColonneSaisiInformation(props) {
         etudiant.diplomas.push(diplome);
         etudiant.gender = gender;
         etudiant.motivation = motivation;
-        
+
         //const res = await inscrire(etudiant);
         return etudiant;
     };
@@ -125,7 +125,7 @@ export function ColonneSaisiInformation(props) {
                                 type="radio"
                                 name="gridRadios"
                                 id="11"
-                                
+
                                 value={Gender.Male}
                                 onSelect={() => {
                                     setGender(Gender.Male)
