@@ -14,7 +14,7 @@ export function ColonneAjoutPieceJointe(props) {
 
 
     return (
-        <div className="col-lg-5 " >
+        <div className=" col-lg-5 " >
             <div className="rounded " style={{
                 borderRadius: "8px",
                 padding: "10px",
