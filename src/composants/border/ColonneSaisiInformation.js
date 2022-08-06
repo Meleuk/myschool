@@ -23,12 +23,13 @@ export function ColonneSaisiInformation(props) {
     const [motivation, setMotivation] = useState("");
     const [diplome, setDiplome] = useState("")
     const [classe, setClasse] = useState("");
+    const [gender, setGender] = useState(Gender.Male);
 
 
-    const [options, setOptions] = useState([{ id: 1 , name :"Genie informatique"},{ id: 2 , name : "Genie culinaire"}, { id: 3 , name :"Genie civil"},{ id: 4 , name : "Sante"}, { id: 5 , name :"Autre"}]);
+    const [options, setOptions] = useState([{ id: 1, name: "Genie informatique" }, { id: 2, name: "Genie culinaire" }, { id: 3, name: "Genie civil" }, { id: 4, name: "Sante" }, { id: 5, name: "Autre" }]);
     //const listOptions = ;
 
-    const [classes, setClasses] = useState([{ id: 1 , name :"Genie informatique"},{ id: 2 , name : "Genie culinaire"}, { id: 3 , name :"Genie civil"},{ id: 4 , name : "Sante"}, { id: 5 , name :"Autre"}]);
+    const [classes, setClasses] = useState([{ id: 1, name: "Genie informatique" }, { id: 2, name: "Genie culinaire" }, { id: 3, name: "Genie civil" }, { id: 4, name: "Sante" }, { id: 5, name: "Autre" }]);
     //const listClasses = 
 
 
@@ -47,16 +48,16 @@ export function ColonneSaisiInformation(props) {
         etudiant.birthDate = birthDate;
         etudiant.birthPlace = birthPlace;
         etudiant.diplomas.push(diplome);
-        etudiant.gender = Gender.Male;
+        etudiant.gender = gender;
         etudiant.motivation = motivation;
-
+        
         //const res = await inscrire(etudiant);
         return etudiant;
     };
 
     useEffect(() => {
         async function init() {
-          
+
             const filiere = await getAllFiliere();
 
             setClasses(filiere)
@@ -114,6 +115,46 @@ export function ColonneSaisiInformation(props) {
                     />
                 </div>
             </div>
+            <fieldset className="form-group ">
+                <div className="row ">
+                    <legend className="col-form-label col-sm-2 pt-0">Sexe</legend>
+                    <div className="col-sm-10 ">
+                        <div className="form-check">
+                            <input
+                                className="form-check-input"
+                                type="radio"
+                                name="gridRadios"
+                                id="11"
+                                
+                                value={Gender.Male}
+                                onSelect={() => {
+                                    setGender(Gender.Male)
+                                }}
+
+                            />
+                            <label className="form-check-label" htmlFor="11">
+                                {Gender.Male}
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input
+                                className="form-check-input"
+                                type="radio"
+                                name="gridRadios"
+                                id="22"
+                                value={Gender.Female}
+                                onSelect={() => {
+                                    setGender(Gender.Female)
+                                }}
+
+                            />
+                            <label className="form-check-label" htmlFor="22">
+                                {Gender.Female}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
             <div className="form-group row">
                 <label htmlFor="birthDate" className="col-sm-2 col-lg-4 col-form-label" style={{ whiteSpace: "nowrap" }}>Date de naissance
                     :</label>

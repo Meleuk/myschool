@@ -40,3 +40,9 @@ export async function getAllOptionsOfFiliere( filiereId) {
 
     return filieresRef.docs.map((el)=>({ id : el.id ,...el.data()}))
 }
+
+export async function getAllDiplome () {
+    const diplomeRef = await getAll("Diplomes");
+
+    return diplomeRef.docs.map((el) => ({id : el.id,...el.data() }))
+}
